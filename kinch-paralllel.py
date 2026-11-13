@@ -1,9 +1,10 @@
+import os
 import sys
 import time
-from pyspark.sql import SparkSession, Window
-from pyspark.sql import functions as F
+from pyspark.sql import SparkSession, Window # type: ignore
+from pyspark.sql import functions as F # type: ignore
 
-cores = sys.argv[1] if len(sys.argv) > 1 else "*"      # 用法: python kinch_spark.py 4
+cores = sys.argv[1] if len(sys.argv) > 1 else os.cpu_count()      # 用法: python kinch_spark.py 4
 
 REMOVED = ["333ft", "magic", "mmagic", "333mbo"]
 
@@ -25,13 +26,13 @@ t0 = time.perf_counter()
 ranks_schema = ("best INT, person_id STRING, event_id STRING, "
                 "world_rank INT, continent_rank INT, country_rank INT")
 
-# df = (spark.read.csv("./data/WCA_export_ranks_average.tsv",
-#                      sep="\t", header=True, schema=ranks_schema)
-#         .filter(~F.col("event_id").isin(REMOVED)))
-
-df = (spark.read.csv("./data/big.tsv",
+df = (spark.read.csv("./data/WCA_export_ranks_average.tsv",
                      sep="\t", header=True, schema=ranks_schema)
         .filter(~F.col("event_id").isin(REMOVED)))
+
+# df = (spark.read.csv("./data/big.tsv",
+#                      sep="\t", header=True, schema=ranks_schema)
+#         .filter(~F.col("event_id").isin(REMOVED)))
 
 
 # 每个项目的世界纪录（成绩越小越好，取最小值）
@@ -69,3 +70,4 @@ result.show(10, truncate=False)     # 会重新计算一遍，所以放在计时
 spark.stop()
 
 print(f"cores: {cores} | startup {t_ready - t_start:.2f}s | compute+write {t1 - t0:.2f}s")
+input("Press any key to exit...")
