@@ -70,4 +70,4 @@ result.show(10, truncate=False)     # 会重新计算一遍，所以放在计时
 spark.stop()
 
 print(f"cores: {cores} | startup {t_ready - t_start:.2f}s | compute+write {t1 - t0:.2f}s")
-input("Press any key to exit...")
+# input("Press any key to exit...")
