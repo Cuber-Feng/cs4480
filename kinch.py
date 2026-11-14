@@ -8,6 +8,7 @@ REMOVED = ["333ft", "magic", "mmagic", "333mbo"]
 
 df = pd.read_csv(
     "./data/WCA_export_ranks_average.tsv",
+    # "./data/big.tsv",
     sep="\t",
     dtype={"person_id": str, "event_id": str},
 )

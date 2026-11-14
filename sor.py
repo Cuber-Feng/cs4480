@@ -3,7 +3,7 @@ import pandas as pd
 import time
 
 t0 = time.perf_counter()
-K = 100                       # 惩罚因子，k >= 1，可自行调整
+K = 1                       # 惩罚因子，k >= 1，可自行调整
 REMOVED = ["333ft", "magic", "mmagic", "333mbo"]
 
 df = pd.read_csv(

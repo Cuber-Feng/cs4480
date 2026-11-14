@@ -26,13 +26,13 @@ t0 = time.perf_counter()
 ranks_schema = ("best INT, person_id STRING, event_id STRING, "
                 "world_rank INT, continent_rank INT, country_rank INT")
 
-df = (spark.read.csv("./data/WCA_export_ranks_average.tsv",
-                     sep="\t", header=True, schema=ranks_schema)
-        .filter(~F.col("event_id").isin(REMOVED)))
-
-# df = (spark.read.csv("./data/big.tsv",
+# df = (spark.read.csv("./data/WCA_export_ranks_average.tsv",
 #                      sep="\t", header=True, schema=ranks_schema)
 #         .filter(~F.col("event_id").isin(REMOVED)))
+
+df = (spark.read.csv("./data/big.tsv",
+                     sep="\t", header=True, schema=ranks_schema)
+        .filter(~F.col("event_id").isin(REMOVED)))
 
 
 # 每个项目的世界纪录（成绩越小越好，取最小值）
