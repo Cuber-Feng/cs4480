@@ -6,22 +6,22 @@
 - Using `pyspark`
 
 ```
-cores: 8 | startup 7.36s | compute+write 109.77s
-cores: 7 | startup 6.40s | compute+write 106.56s
-cores: 6 | startup 6.48s | compute+write 107.59s
-cores: 5 | startup 6.50s | compute+write 118.20s
-cores: 4 | startup 6.46s | compute+write 132.43s
-cores: 3 | startup 6.62s | compute+write 155.94s
-cores: 2 | startup 6.68s | compute+write 193.33s
-cores: 1 | startup 6.55s | compute+write 345.80s
 
 cores: 8 | startup 7.37s | compute+write 93.07s
 cores: 8 | startup 4.08s | compute+write 82.88s
 cores: 8 | startup 3.96s | compute+write 83.76s
 
+cores: 7 | startup 3.83s | compute+write 79.77s
+cores: 7 | startup 3.79s | compute+write 78.97s
+cores: 7 | startup 3.79s | compute+write 80.42s
+
 cores: 6 | startup 4.09s | compute+write 81.28s
 cores: 6 | startup 4.13s | compute+write 82.07s
 cores: 6 | startup 3.89s | compute+write 87.60s
+
+cores: 5 | startup 3.88s | compute+write 86.77s
+cores: 5 | startup 3.87s | compute+write 81.49s
+cores: 5 | startup 3.98s | compute+write 83.39s
 
 cores: 4 | startup 4.00s | compute+write 93.75s
 cores: 4 | startup 4.03s | compute+write 99.81s
