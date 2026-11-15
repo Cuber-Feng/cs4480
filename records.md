@@ -2,14 +2,13 @@
 
 ## Kinch
 
-- Dataset: 3.4GB, tsv
+- Dataset: 3.4 GB, .tsv
 - Using `pyspark`
 
 ```
-
-cores: 8 | startup 7.37s | compute+write 93.07s
-cores: 8 | startup 4.08s | compute+write 82.88s
-cores: 8 | startup 3.96s | compute+write 83.76s
+cores: 8 | startup 3.79s | compute+write 81.13s
+cores: 8 | startup 3.53s | compute+write 82.69s
+cores: 8 | startup 3.77s | compute+write 82.09s
 
 cores: 7 | startup 3.83s | compute+write 79.77s
 cores: 7 | startup 3.79s | compute+write 78.97s
@@ -40,4 +39,41 @@ cores: 1 | startup 4.02s | compute+write 196.55s
 cores: 1 | startup 4.05s | compute+write 193.88s
 ```
 
-When using pandas, the os force to stop the program because it using too much memory. `Device memory is nearly full. An application was using a lot of memory and was forced to stop.`
+- Using Manual Parallelism
+
+```
+cores: 8 | chunks: 26 | parallel 54.24s | post-processing 0.93s | total 55.17s
+cores: 8 | chunks: 26 | parallel 53.74s | post-processing 0.93s | total 54.67s
+cores: 8 | chunks: 26 | parallel 53.02s | post-processing 0.90s | total 53.92s
+
+cores: 7 | chunks: 26 | parallel 53.28s | post-processing 0.97s | total 54.26s
+cores: 7 | chunks: 26 | parallel 52.65s | post-processing 0.94s | total 53.59s
+cores: 7 | chunks: 26 | parallel 53.04s | post-processing 0.97s | total 54.02s
+
+cores: 6 | chunks: 26 | parallel 51.64s | post-processing 0.97s | total 52.61s
+cores: 6 | chunks: 26 | parallel 51.98s | post-processing 0.97s | total 52.95s
+cores: 6 | chunks: 26 | parallel 51.35s | post-processing 0.96s | total 52.31s
+
+cores: 5 | chunks: 26 | parallel 52.13s | post-processing 0.97s | total 53.10s
+cores: 5 | chunks: 26 | parallel 52.37s | post-processing 0.97s | total 53.34s
+cores: 5 | chunks: 26 | parallel 52.00s | post-processing 0.96s | total 52.97s
+
+cores: 4 | chunks: 26 | parallel 53.18s | post-processing 0.91s | total 54.09s
+cores: 4 | chunks: 26 | parallel 53.65s | post-processing 0.96s | total 54.61s
+cores: 4 | chunks: 26 | parallel 53.67s | post-processing 0.93s | total 54.60s
+
+cores: 3 | chunks: 26 | parallel 56.43s | post-processing 0.97s | total 57.40s
+cores: 3 | chunks: 26 | parallel 56.26s | post-processing 0.95s | total 57.20s
+cores: 3 | chunks: 26 | parallel 56.01s | post-processing 0.97s | total 56.98s
+
+cores: 2 | chunks: 26 | parallel 62.98s | post-processing 1.03s | total 64.01s
+cores: 2 | chunks: 26 | parallel 63.72s | post-processing 0.96s | total 64.68s
+cores: 2 | chunks: 26 | parallel 62.15s | post-processing 0.96s | total 63.11s
+
+cores: 1 | chunks: 26 | parallel 107.35s | post-processing 1.00s | total 108.35s
+cores: 1 | chunks: 26 | parallel 105.33s | post-processing 0.97s | total 106.29s
+cores: 1 | chunks: 26 | parallel 106.71s | post-processing 1.02s | total 107.74s
+
+```
+
+When using pandas, the OS force to stop the program because it using too much memory. `Device memory is nearly full. An application was using a lot of memory and was forced to stop.`
